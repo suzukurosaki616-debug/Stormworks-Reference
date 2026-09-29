@@ -9,7 +9,7 @@
 | Compass Sensor (`compass_sensor`) | 出力 `Compass Reading`、入力 `Backlight`(bool) / `Electric`。原文: *"a number value representing **the turn that must be made for it to face north**"* — 「北からの方位」ではなく**「北を向くために必要な回転量」**である点に注意(符号が逆になりうる)。ノード側の原文(2026-09-12 確認): *"The angle measured in turns that the needle is rotated from the **white arrow** on the display."* — **基準は部品面の白矢印**。取り付け向きで読みが変わる |
 | Tilt Sensor (`rotation_sensor`) | 出力 `Tilt` のみ。*"The measured tilt relative to the horizon."* 0.25turn = +90°。基準0は設置時の青矢印方向。**ファイル名は `rotation_sensor.xml`**(表示名と違うので検索時に注意) |
 | Linear Speed Sensor (`linear_speed_sensor`) | 出力 `Linear Speed` のみ。*"The sensor's linear speed in m/s."* スカラー |
-| Angular Speed Sensor (`angular_speed_sensor`) | 出力 `Angular Speed` のみ。原文 *"in **rotations per second**"* / *"about the component's **y axis**"*(2026-09-12 確認)。**単位が一次資料で保証されている唯一の角速度源** — Physics Sensor ch10-12 の単位(未検証)の対照器に使える |
+| Angular Speed Sensor (`angular_speed_sensor`) | 出力 `Angular Speed` のみ。原文 *"in **rotations per second**"* / *"about the component's **y axis**"*(2026-09-12 確認)。**単位が一次資料で保証されている角速度源**。Physics Sensor ch10-12 も turn/s(ユーザー 2026-09-30、§4.2) |
 | Distance Sensor (`distance_sensor`) | 出力 `Distance`、入力 `Electric`。最大500m、未検出時500m |
 | Laser Distance Sensor (`laser_distance_sensor`) | 出力 `Distance`、入力 `Electric` / `Active`(bool) / `Wavelength`(number) / **`Pivot`(type=5)**。最大4000m。**Pivotノードでレーザーの向きをcompositeで指令できる**: *"(Value 1 : Pivot X) (Value 2 : Pivot Y)"*。`Wavelength` で波長を指定でき、対の Laser Point Sensor と組にできる |
 | Laser Point Sensor (`laser_point_sensor`) | 入力 `Electric` / `Wavelength`、出力 `Data Output`(type=5)。*"On/Off channel 1: is laser detected. Number channel 1, 2: X, Y position within the sensors **120 degree field of view**."* |
@@ -62,6 +62,13 @@
 - **【実機検証済み】砲弾は発射母体の速度を100%継承する**。走行間・航行間射撃では初速ベクトルへの加算が必須
 - **【実機検証済み】当たり判定はtickごとの線分(swept)。すり抜けは発生しない**
 - **【実機計測】Rotary Autocannon (`gun_v`) はトリガー投入から発砲まで約0.5秒(30tick)、停止も約0.5秒。** **スピンアップ専用の入力ノードは存在せず `Trigger` しかない**ため、初弾の遅れを詰めたい場合は交戦直前にトリガーを断続投入して回転を維持するしかない(数発が的外れに出て発砲音も不自然になる)。TOF 1.5秒の対空交戦では0.5秒は3割の遅れに相当し無視できない
+- **【一次資料 2026-09-30】砲のロジックノードは2系統に分かれる**(ROM `gun_*.xml`):
+  - **給弾式**(Machine Gun `gun_xs` / Light Autocannon `gun_s` / Heavy Autocannon `gun_m` / Rotary Autocannon `gun_v`):
+    `Trigger` = *"feeds, loads, and fires"* — **トリガーが給弾・装填・発射を全部兼ねる**。トリガーを止めると装填も止まる
+  - **尾栓式**(Battle Cannon `gun_l` / Artillery Cannon `gun_xl` / Bertha Cannon `gun_xxl`): `Trigger` = *"fires a loaded shell"* のみ。
+    **`Open Breech` 入力で尾栓を開け、フィーダーで砲弾を送り込み、尾栓を閉じると撃てる。装填にトリガーは関係ない**(ユーザー 2026-09-30)
+  - どちらも `Loaded` 出力(撃てる弾が入っていると true)を持つ
+- **【ユーザー確認 2026-09-30】`Fuse Timer` が 0 なら着発。**
 - **【実機検証済み】時限信管(`Fuse Timer`)は発射時にセットされる。** `Fuse Timer` ノードを持つのは Heavy Autocannon 以上のみ(Machine Gun / Light Autocannon / Rotary Autocannon には無い = 直撃必須)
 - 砲弾はDespawn Timer(tick)とDespawn Speed(50 m/s。終端落下速度 `0.5/k` が50以下になるMG/LAC/Rotaryでのみ実効)で消滅する
 - **【ユーザー提供 2026-09-29】Machine Gun: 初速 800 m/s、抗力係数 不明、重力 30 m/s²(0.5 m/s/tick)、Despawn Timer 300 tick、Despawn Speed 50 m/s。**
