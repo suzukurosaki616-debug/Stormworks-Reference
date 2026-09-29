@@ -180,4 +180,6 @@ v1 の既知の問題: 発射が Jettison Level も種別も見ない / 自動�
 - `Obj 1872 AAFCS` — 対空射撃管制。4.2〜4.3b(センサー・砲弾)の定義ファイル読解の出所。
 - `Obj 1882 Trinocular-M` — ターゲティングポッド。4.5c〜4.5e(レーザー・Hardpoint・カメラ)の出所。
 - `Obj 9101 EULERTEST` — Physics Sensor のオイラー角の規約を判定する治具。
+- `Obj 1841 NAVAID` — 船舶用航海支援(測深・前方測深)。§4.5c の水面透過の用途例。
+- `Obj 1951 ALARM` — 船舶の警報バス。§4.11・§4.12・§4.15 の設計上の注意の宛先。
 - `Obj 9901 SWSIM` — PC上の Stormworks 挙動シミュレータ。`stormworks64.exe` の直読調査の出所。

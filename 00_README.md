@@ -32,20 +32,30 @@ Stormworks機体のマイクロコントローラ(MC)向けLuaを書く各エー
 
 | ファイル | 章 | 行数 |
 |---|---|---|
-| `00_README.md` | 読み方・目次 | 51 |
-| `00_premise.md` | §0 MC Lua と Addon Lua は別物 / §0b 挙動を物理的な直感から導かない | 50 |
+| `00_README.md` | 読み方・目次 | 61 |
+| `00_premise.md` | §0 MC Lua と Addon Lua は別物 / §0b 挙動を物理的な直感から導かない | 56 |
 | `00a_dev_meta.md` | §0a 開発者の明言(ゲーム内 Help の "Meta from the devs"。**最優先**) | 14 |
-| `01_lua_runtime.md` | §1 Lua実行環境の特性・落とし穴(MC Lua は 5.3) | 24 |
-| `02_composite.md` | §2 コンポジット channel の一般ルール(Composite Write のゼロフィル) | 48 |
-| `03_lua_api.md` | §3 Lua API 関数リファレンス(input/output, property, screen, map, async, callback) | 123 |
-| `04-1_radar.md` | §4.1 レーダー(FOVと探知距離、Di、ノイズ、ノード構成) | 234 |
-| `04-2_physics_sensor.md` | §4.2 Physics Sensor(オイラー角は radian、Y-up)/ §4.2b Astronomy Sensor | 83 |
+| `01_lua_runtime.md` | §1 Lua実行環境の特性・落とし穴(MC Lua は 5.3) | 23 |
+| `02_composite.md` | §2 コンポジット channel の一般ルール(Composite Write のゼロフィル) | 47 |
+| `03_lua_api.md` | §3 Lua API 関数リファレンス(input/output, property, screen, map, async, callback) | 122 |
+| `04-1_radar.md` | §4.1 レーダー(FOVと探知距離、Di、ノイズ、ノード構成) | 233 |
+| `04-2_physics_sensor.md` | §4.2 Physics Sensor(オイラー角は radian、Y-up)/ §4.2b Astronomy Sensor | 82 |
 | `04-3_gps_gun_pivot.md` | §4.3 GPS・コンパス・高度計・距離センサー / §4.3b 砲弾の挙動 / §4.3c ピボット・砲塔リング / §4.3d ビークル物理・空力・流体の全定数 | 214 |
-| `04-5_misc_sensors.md` | §4.4 Sonar / §4.5 その他センサー / §4.5b モニタ / §4.5c レーザー系 / §4.5d Hardpoint Connector / §4.5e カメラ(画角・重ね描き) | 307 |
-| `04-6_engine_radio.md` | §4.6 ジェットエンジン / §4.7 Radio RX | 106 |
+| `04-5_misc_sensors.md` | §4.4 Sonar / §4.5 その他センサー / §4.5b モニタ / §4.5c レーザー系 / §4.5d Hardpoint Connector / §4.5e カメラ(画角・重ね描き) | 312 |
+| `04-6_engine_radio.md` | §4.6 ジェットエンジン / §4.7 Radio RX | 104 |
 | *(§4.8 ロケット/推進飛翔体部品は `00b_ordnance_index.md` に分離)* | — | — |
-| `05_vehicle_xml.md` | §5 ビークル配置XMLフォーマット | 82 |
-| `06_known_traps.md` | §6 実機検証済みの既知の罠まとめ | 18 |
-| `07_unverified.md` | §7 未検証・要確認事項 | 52 |
-| `08_sources.md` | §8 出典 | 28 |
-| `09_conventions.md` | §9 設計規約(9.6 パイロンの composite 規約を含む) / §10 出所プロジェクトの呼び名 | 183 |
+| `04-9_fluid_power.md` | §4.9 流体系(タンク・計測・バルブ/ポンプ・ポート)・機関・電力部品(定義XML読解、挙動未検証) | 256 |
+| `04-10_controls.md` | §4.10 操縦系(座席・舵・Gyro・車輪・Data Logger)/ 4.10.6 インベントリ非掲載部品の一覧 | 112 |
+| `04-11_propulsion.md` | §4.11 推進系(プロペラ・電動モーター・一体型エンジン運転知見・Torque Meter・power ノード) | 97 |
+| `04-12_displays.md` | §4.12 計器・表示(Instrument Panel・Dial/Gauge の範囲外挙動・Digital Display の桁・Buzzer・HUD の黒抜け) | 98 |
+| `04-13_mechanisms.md` | §4.13 機構(ボタンのチェーン・Lockable・キーパッドのWP入力・Door Frame Controller・コネクタ・直動・Keel) | 100 |
+| `04-14_modular_engine.md` | §4.14 モジュラーエンジン(構成・Lua の窓口・Air=指令/Fuel=従属の空燃比制御・一体型との使い分け) | 78 |
+| `04-15_deck_utility.md` | §4.15 甲板・艤装(ウィンチ/アンカーの rope リンク・照明・音・カメラ・消火・ノードの面食い合い) | 114 |
+| `04-16_industrial.md` | §4.16 産業(蒸気プラントの一周・炉3種・固形資源搬送・原子炉・Oil Rig/漁労) | 96 |
+| `04-17_logic_gates.md` | §4.17 ロジックゲート(Lua の外に置く価値があるもの・三角関数は turn・0除算は Error 出力) | 49 |
+| `04-18_structural.md` | §4.18 構造・装飾(質量=占有体積・パイプ未検証・Physics Flooder・可動部の従ブロック・窓/手すり) | 84 |
+| `05_vehicle_xml.md` | §5 ビークル配置XMLフォーマット | 89 |
+| `06_known_traps.md` | §6 実機検証済みの既知の罠まとめ | 17 |
+| `07_unverified.md` | §7 未検証・要確認事項 | 66 |
+| `08_sources.md` | §8 出典 | 30 |
+| `09_conventions.md` | §9 設計規約(9.6 パイロンの composite 規約を含む) / §10 出所プロジェクトの呼び名 | 185 |

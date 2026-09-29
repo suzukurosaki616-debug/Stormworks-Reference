@@ -69,12 +69,20 @@ MC Luaとは別レイヤーの話。`%appdata%/Stormworks/data/vehicles/*.xml` (
 - `sc`属性の末尾にカンマ区切りで追加すると、primitive形状の面ごとの部分塗装オーバーライドになる(5.1参照)。
 - `sign`/`sign_na`コンポーネントは`gc`(グリッドカラー、ピクセル配列)/`gca`(アルファ)属性で自由描画の画像データを直接埋め込む。
 
+### 5.6b 定義XML(`rom/data/definitions/*.xml`)を機械で読むときの罠(【確認済み 2026-09-18】)
+
+- **標準の XML パーサでは全ファイルが読めない。** `<physics_shape_rotation 00="1" 01="0" ...>` のように**属性名が数字で始まる**ため不正 XML 扱いになる。読む前に ` 00="` → ` m00="` のような置換をかける(正規表現 ` ([0-9][0-9])="`)
+- `<logic_node>` の `type=` / `mode=` は**新しめの部品で省略されている**(Saddle Seat・Space Seat の bool 出力、車輪の `Brake` 等)。省略時は bool と扱われている模様。§4.9.0 の「mode 未指定」と同じ
+- `<definition flags="...">` はビットフィールド。bit 29 はインベントリ非掲載と推定(§4.10.6)。他は未解読
+- 定義XMLがあってもゲーム内インベントリに無い部品がある(§4.10.6)。ビークルXMLに `d="..."` で書けば置けて機能する(ユーザー確認)
+- **ノードの `<position>` は部品のボクセル面を1つ占有する。** 小さい部品にノードを増やせないのはこのため(§4.15.5)
+
 ### 5.7 ロジックノード配線 (`logic_node_links`)
 
 - 各コンポーネントが持つロジックノードの位置は、**絶対ボクセル座標(`vp` + `r`を適用したローカルオフセット)** で一意に決まる。`rom/data/definitions/<d>.xml`の`<logic_nodes><logic_node><position .../></logic_node></logic_nodes>`がローカルオフセットの一次情報源。
 - ビークル側の`<logic_node_links>`は、**離れた場所同士を繋ぐ「ワイヤー」的な接続だけを、絶対座標のペア+`type`で記録する**:
   - `type`の値は定義ファイルの`<logic_node type="...">`と対応: `0=Bool, 1=Number(Float), 2=Torque(動力), 3=Fluid(液体), 4=Electric(電力)`。
-  - **Torque(2)とFluid(3)は`logic_node_links`に一切登場しない**。物理的なボクセル隣接(シャフト/配管パーツが接触)で自動接続されるため、明示的なリンク記録が不要と考えられる。Bool/Number/Electricのように「隔たった場所を繋ぐ」型だけが座標リンクとして記録される。
+  - **Torque(2)とFluid(3)は`logic_node_links`に一切登場しない**。**パイプ部品(`trans_*`、§4.18.2)がボクセル隣接で繋がるため**、明示的なリンク記録が不要と考えられる。Bool/Number/Electricのように「隔たった場所を繋ぐ」型だけが座標リンクとして記録される。
 - 各コンポーネント自身が持つ`<logic_slots><slot editor_connected="0|1" value="..."/></logic_slots>`は、接続の有無と最終値のキャッシュであり、**どこに繋がっているかは記録していない**(トポロジーは`logic_node_links`側の役目)。定義ファイルの`<logic_nodes>`の個数より`<logic_slots>`の個数が多いことがある(ボタン系コンポーネントで確認。恐らく内部クラスの固定長スロット配列によるパディング)。
 - Composite型ノードのキャッシュ値は `<slot><value bools="0" 01="0" ... 32="0"/></slot>` という32要素の配列で表現される(LUA APIドキュメントの「Composite = bool_values(32)+float_values(32)」テーブル構造と対応)。
 

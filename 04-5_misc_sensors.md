@@ -38,10 +38,10 @@
 | Wind Sensor | **【一次資料で訂正】現行版の定義順は Number1=`Wind Speed`、Number2=`Wind Direction`**。従来この資料には逆(方向が先)と書かれていたが `wind_sensor.xml` のノード定義順は速度が先。原文は *"Wind Speed: The relative wind velocity."* / *"Wind Direction: The direction of the wind **relative to the component**."* — **どちらも部品基準の「見かけの風」**であり、絶対風を得るには自機速度で補正する必要がある。**【一次資料 2026-09-12】tooltip 原文: *"only measures wind in the plane of the sensor"* — センサー面内の成分しか測らない。傾けて付けると風が減る。方向は -0.5〜0.5 turn** |
 | Rain Sensor | Number1=降雨強度(0=快晴〜1=豪雨) |
 | Humidity Sensor | Number1=湿度(0=無霧〜1=最大霧) |
-| Temperature Sensor | Number1=周囲温度[°C] |
+| Temperature Sensor | Number1=周囲温度[°C]。**【ユーザー実機知見 2026-09-18】部品が破壊されると出力が 0 になる。** これを利用して外殻に貼り付け「0 を返したら破損(穴)」と判定する破損検知に使われている(火災警報も兼ねる)。**極地では気温が実際に 0 を通過するので一瞬誤検知する** → 一定時間の連続 0 で判定する。他の部品でも「破壊→0」が成り立つかは未検証(§7) |
 | Torque Meter | Number1=RPS(回転/秒)、Number2=トルク |
 | Fluid Pressure Sensor | Number1=圧力 |
-| Fluid Meter | Number1=部屋の容量、Number2=部屋内の流体量[L] |
+| Liquid Meter / Gas Meter | **【一次資料で訂正 2026-09-17】定義順は Number1=`Liquid Level`(L)、Number2=`Fluid Capacity`(L、非密閉なら0)**。旧表は逆だった。comp 出力で流体種別ごとの量も出る。詳細は §4.9.2 |
 | Clock | Number1=現在時刻(0=午前0時、0.5=正午) |
 
 ### 4.5b モニタ (Monitor) — タッチ出力
@@ -77,6 +77,8 @@
 - 2点同時タッチが取れるので、ピンチ操作(ズーム変更)を組める
 - **【ユーザー実機確認 2026-09-12】押下boolはレベル(押されている間ずっとtrue)。** 「タップ」として扱うには**立ち上がりエッジを自前で取る**(前tickの値を保持して比較)
 - 座標系はモニタ座標系(左上原点、y下向き)。`map.screenToMap` にそのまま渡せる
+- **【ユーザー知見 2026-09-23】HUD(`monitor_hud_*`)と Viewing Scope は、カメラ映像に重ねたとき黒が透明になる**(§4.12.4)。
+  重ねる画は明るい色で描く。**映像入力が無ければ背景は普通に黒**なので、計器画面として使う分には通常のモニタと同じ
 - **モニタの画素数は偶数(32・64・96…)なので、中心の画素が無い。** 64px なら中心は 31.5(画素 31 と 32 の間)。
   「中心 32」で左右対称に置くつもりの図形は、右・下に半画素ずれる。**対称に置くなら端からの距離で考える**
   (例: 縁に接する 2×2 の点の左上は 0〜62。`32 ± 31` だと左と上だけ1px 空く。`Obj 1882` で実機に出た、2026-09-28)
@@ -120,6 +122,10 @@
 
 `rom/data/definitions/` の `laser_beacon.xml` / `laser_point_sensor.xml` /
 `laser_distance_sensor.xml` / `radar_advanced_missile_laser.xml` / `camera_gimbal_laser.xml`。
+
+> **【ユーザー実機知見 2026-09-18】レーザーのビームは目視できる。** 可視光はそのまま見えるし、
+> 赤外線にしてもナイトビジョンで見える。**隠密性は無い。** 舷側の距離測定など「見えて困らない」
+> 用途では Laser Distance Sensor より **Distance Sensor(§4.3)で足りる**ことが多い。
 
 #### 波長は「プロパティ」ではなく「数値入力ノード」
 

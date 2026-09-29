@@ -22,6 +22,9 @@
 - [Steam Guide - Physics Sensor / euler angles](https://steamcommunity.com/sharedfiles/filedetails/?id=3302971632)(**オイラー角の単位・軸対応・適用順・左手系の一次情報**。4.2節の出典)
 - [Reddit - Stormworks XML rotations to Euler rotations (r/Stormworks)](https://www.reddit.com/r/Stormworks/comments/1hpvvdx/stormworks_xml_rotations_to_euler_rotations/)(`r`行列の構造の補強、XML編集ウェッジの歪み現象の説明)
 - Steamガイド(Physics/Astronomy SensorのEuler出力に関するもの、URL未記録)- Stormworksが左手系座標系である旨の記載。要再確認・裏取り。
+- [FLUID - Stormworks: Build and Rescue_JP Wiki](https://wikiwiki.jp/sbarjp/FLUID)(タンク容量・バルブの無給電時挙動・ポート系の性能差なし。§4.9 の出典。**ユーザー推奨: 疑問が出たらまず JP Wiki を覗く**)
+- JP Wiki の [VEHICLE CONTROL](https://wikiwiki.jp/sbarjp/VEHICLE%20CONTROL) / [PROPULSION](https://wikiwiki.jp/sbarjp/PROPULSION) / [ELECTRIC](https://wikiwiki.jp/sbarjp/ELECTRIC) / [MECHANICS](https://wikiwiki.jp/sbarjp/MECHANICS) / [クラフトガイド/エンジン系](https://wikiwiki.jp/sbarjp/クラフトガイド/エンジン系)(§4.10・§4.11・§4.9.7 の出典、2026-09-18。**非公式。XML と一致する数値は XML 転記の可能性があり、独立の裏付けとしない**。§0b 規則5)
+- [note - 爆速流体輸送法](https://note.com/mumenry/n/n50fc3c069e62)(二次資料。圧力差駆動・ポンプ最大圧・合流で流量低下)
 - 本セッションでの実機サンプル観察(ユーザー提供の複数ビークルXML: primitiveブロック単体、寄棟屋根小屋モデル、24パターン回転グリッドテスト等)
 
 ---
