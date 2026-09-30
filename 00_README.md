@@ -41,7 +41,7 @@ Stormworks機体のマイクロコントローラ(MC)向けLuaを書く各エー
 | `04-1_radar.md` | §4.1 レーダー(FOVと探知距離、Di、ノイズ、ノード構成) | 233 |
 | `04-2_physics_sensor.md` | §4.2 Physics Sensor(オイラー角は radian、Y-up)/ §4.2b Astronomy Sensor | 94 |
 | `04-3_gps_gun_pivot.md` | §4.3 GPS・コンパス・高度計・距離センサー / §4.3b 砲弾の挙動 / §4.3c ピボット・砲塔リング / §4.3d ビークル物理・空力・流体の全定数 | 229 |
-| `04-5_misc_sensors.md` | §4.4 Sonar / §4.5 その他センサー / §4.5b モニタ / §4.5c レーザー系 / §4.5d Hardpoint Connector / §4.5e カメラ(画角・重ね描き) | 312 |
+| `04-5_misc_sensors.md` | §4.4 Sonar / §4.5 その他センサー / §4.5b モニタ / §4.5c レーザー系 / §4.5d Hardpoint Connector / §4.5e カメラ(画角・重ね描き) | 314 |
 | `04-6_engine_radio.md` | §4.6 ジェットエンジン / §4.7 Radio RX | 104 |
 | *(§4.8 ロケット/推進飛翔体部品は `00b_ordnance_index.md` に分離)* | — | — |
 | `04-9_fluid_power.md` | §4.9 流体系(タンク・計測・バルブ/ポンプ・ポート)・機関・電力部品(定義XML読解、挙動未検証) | 256 |
