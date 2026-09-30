@@ -313,3 +313,39 @@ sx = 32 + (x / z) · k     sy = 32 − (y / z) · k     k = 32 / tan(f / 2)   [p
 
 **画角と表示器**: Viewing Scope は画角がクライアント設定によらず一定、HMD はクライアントの FOV 設定で描画範囲が変わる(§4.5b)。
 
+
+### 4.5f Transponder / Transponder Locator(緊急ビーコン)(【一次資料で確認済み 2026-10-01】/ 距離式は JP Wiki)
+
+`rom/data/definitions/` の `transponder.xml` / `transponder_locator.xml`。
+手持ち版は `inventory_equipment_transponder.xml` / `inventory_equipment_radio_signal_locator.xml`。
+
+| 部品 | ノード | 原文 |
+|---|---|---|
+| Transponder(発信) | 入力 `Active`(bool)、`Electric` | *"Emit a continuous transponder signal when active."* |
+| Transponder Locator(受信) | 入力 `Active`(bool)、`Electric` / **出力 `Transponder Pulse`(bool)** | *"Emits a periodic boolean pulse, with a frequency determined by the distance to the nearest transponder signal."* |
+
+**受信側の出力は bool パルス1本だけ。方位も距離の数値も出ない。** 距離はパルス間隔から逆算する。
+方位は出ないので、位置を知るには**移動しながら複数地点で距離を取り、円の交点を解く**(多点測位)しかない。
+
+#### パルス間隔と距離(JP Wiki「検証」ページ。**本資料では未検証**)
+
+- **interval[tick] = 0.02 × 距離[m] + 5**(+ランダムなノイズ)
+- 逆に **距離[m] = 50 × interval − 250**
+- interval は「ON になった tick から次に ON になる tick まで」
+- ノイズは**おおよそ 60 tick 強ごとに値が変わり、その間は一定**。距離でノイズ量が変わるかは Wiki でも要検証
+- 最大探知距離の記載なし(部品説明は *"over great distances"* のみ)
+
+**設計上の含意(式が正しい場合):**
+- **interval は整数 tick でしか測れないので、1回の測定の距離分解能は 50 m。** さらにノイズが乗るため、
+  3つの円はまず1点で交わらない → **4点以上を最小二乗で解く**のが素直(円の式どうしの差をとると
+  連立一次方程式になるので、点数を増やしても形は同じ)
+- **ノイズは約 60 tick 一定**なので、同じ地点で連続パルスを平均しても、それより短い平均ではノイズが消えない
+- **測定点を一直線に並べると解けない**(進路の左右どちらかが区別できず、一次方程式も退化する)
+- 遠いほど interval が長い(10 km で約 205 tick ≒ 3.4 秒)。**その間も自機は動く**ので、
+  距離と組にする自機位置の取り方(間隔の中点など)を決めておく
+
+#### 手持ち版との違い(部品説明より)
+
+- 手持ち Transponder: **MOB(man overboard)モードでは、プレイヤーが水没すると自動で発信を始める**。装備から外しても・捨てても動き続ける
+- 手持ち Radio Signal Locator: ビープ音の間隔で知らせる。*"shorter detection range than the vehicle mounted locator, but can narrow down the target location to a smaller area"*
+- 車載 Locator のもう一つの説明文は *"Outputs the strongest signal strength detected, transponder signal strengths will decrease with distance."* — 「一番近い」と「一番強い」は、強さが距離で単調に落ちるなら同義(未検証)
