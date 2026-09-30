@@ -71,7 +71,7 @@
 - **【ユーザー確認 2026-09-30】`Fuse Timer` が 0 なら着発。**
 - **【実機検証済み】時限信管(`Fuse Timer`)は発射時にセットされる。** `Fuse Timer` ノードを持つのは Heavy Autocannon 以上のみ(Machine Gun / Light Autocannon / Rotary Autocannon には無い = 直撃必須)
 - 砲弾はDespawn Timer(tick)とDespawn Speed(50 m/s。終端落下速度 `0.5/k` が50以下になるMG/LAC/Rotaryでのみ実効)で消滅する
-- **【ユーザー提供 2026-09-29】Machine Gun: 初速 800 m/s、抗力係数 不明、重力 30 m/s²(0.5 m/s/tick)、Despawn Timer 300 tick、Despawn Speed 50 m/s。**
+- **【ユーザー提供 2026-09-29】Machine Gun: 初速 800 m/s、重力 30 m/s²(0.5 m/s/tick)、Despawn Timer 300 tick、Despawn Speed 50 m/s。** 抗力は上の表の k = 0.025(当時は不明としていた)
   Battle Cannon も初速は約 800 m/s(上の到達距離の上限 6653m と k=0.002 から逆算)で、違うのは抗力だけ
 - **【ユーザー確認 2026-09-29】弾種を変えても弾道プロファイル(初速・抗力・重力)は変わらない。** 弾道パラメータは砲ごとに1組でよい
 - **【ユーザー談 2026-09-29】爆発の範囲ダメージは、間にあるものをすべて無視する球。** 壁や装甲の陰に隠しても防げない。
