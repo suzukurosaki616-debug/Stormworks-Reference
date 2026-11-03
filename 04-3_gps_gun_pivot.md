@@ -72,6 +72,10 @@
 - **【一次資料 2026-09-30】砲のロジックノードは2系統に分かれる**(ROM `gun_*.xml`):
   - **給弾式**(Machine Gun `gun_xs` / Light Autocannon `gun_s` / Heavy Autocannon `gun_m` / Rotary Autocannon `gun_v`):
     `Trigger` = *"feeds, loads, and fires"* — **トリガーが給弾・装填・発射を全部兼ねる**。トリガーを止めると装填も止まる
+    - **【ユーザー実機観察 2026-11-03・目視、tick は未計測】** 上の「止めると装填も止まる」とは食い違う点がある:
+      - トリガーのパルスで装填が始まるのは、**砲に隣接したベルトに弾が入っているか、弾薬無限がオンのときだけ**。弾がベルトを流れるのに時間がかかる(`Autocannon Belt (Feeder)` の `Feed` で押せる)
+      - Heavy Autocannon はトリガーを一瞬引くだけでも、離した後に `Loaded` が立つ。**`Loaded` が立った瞬間に発砲し、連射間隔は弾の供給速度で決まる**(上の表の 16 tick より遅くなりうる)。Light Autocannon はそうではない
+      - `Loaded` でクールダウン明けなら、トリガーを引いた瞬間に出る。**`Loaded` を見てトリガーを離すフィードバックで「撃たずに装填だけ」はできない**
   - **尾栓式**(Battle Cannon `gun_l` / Artillery Cannon `gun_xl` / Bertha Cannon `gun_xxl`): `Trigger` = *"fires a loaded shell"* のみ。
     **`Open Breech` 入力で尾栓を開け、フィーダーで砲弾を送り込み、尾栓を閉じると撃てる。装填にトリガーは関係ない**(ユーザー 2026-09-30)
   - どちらも `Loaded` 出力(撃てる弾が入っていると true)を持つ
