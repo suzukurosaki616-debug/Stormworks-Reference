@@ -3,6 +3,7 @@
 - **ゲーム内 Lua ブロックの Help "Meta from the devs"**(開発者の記述。§0a。最優先)
 - [teinishi「Stormworks の数値信号に30bit詰める」](https://teinishi.hateblo.jp/entry/stormworks-number-30bit)(数値信号の float32 表現と Composite Binary 変換のビット対応。§2)
 - [Radar - Official Stormworks Wiki](https://stormworks.fandom.com/wiki/Radar)
+- [Search and Destroy DLC - Official Stormworks Wiki](https://stormworks.fandom.com/wiki/Search_and_Destroy_DLC)(砲の寿命・発射間隔・過熱・尾栓の時間・ドラム容量。§4.3b で exe 直読値と突き合わせた、2026-11-07)
 - [Gameplay/Workbench/Components/Sensors - Official Stormworks Wiki](https://stormworks.fandom.com/wiki/Gameplay/Workbench/Components/Sensors)
 - [Wiki/Guides/Lua/Exploring the Stormworks Lua API](https://stormworks.fandom.com/wiki/Wiki/Guides/Lua/Exploring_the_Stormworks_Lua_API)
 - [Wiki/Guides/Lua/Special Advice for Lua](https://stormworks.fandom.com/wiki/Wiki/Guides/Lua/Special_Advice_for_Lua)
