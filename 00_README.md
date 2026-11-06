@@ -56,6 +56,6 @@ Stormworks機体のマイクロコントローラ(MC)向けLuaを書く各エー
 | `04-18_structural.md` | §4.18 構造・装飾(質量=占有体積・パイプ未検証・Physics Flooder・可動部の従ブロック・窓/手すり) | 84 |
 | `05_vehicle_xml.md` | §5 ビークル配置XMLフォーマット | 89 |
 | `06_known_traps.md` | §6 実機検証済みの既知の罠まとめ | 25 |
-| `07_unverified.md` | §7 未検証・要確認事項 | 68 |
+| `07_unverified.md` | §7 未検証・要確認事項 | 70 |
 | `08_sources.md` | §8 出典 | 32 |
 | `09_conventions.md` | §9 設計規約(9.6 パイロンの composite 規約を含む) / §10 出所プロジェクトの呼び名 | 194 |
