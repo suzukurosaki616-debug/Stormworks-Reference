@@ -38,8 +38,8 @@ Stormworks機体のマイクロコントローラ(MC)向けLuaを書く各エー
 | `01_lua_runtime.md` | §1 Lua実行環境の特性・落とし穴(MC Lua は 5.3) | 24 |
 | `02_composite.md` | §2 コンポジット channel の一般ルール(Composite Write のゼロフィル) | 48 |
 | `03_lua_api.md` | §3 Lua API 関数リファレンス(input/output, property, screen, map, async, callback) | 125 |
-| `04-1_radar.md` | §4.1 レーダー(FOVと探知距離、Di、ノイズ、ノード構成) | 245 |
-| `04-2_physics_sensor.md` | §4.2 Physics Sensor(オイラー角は radian、Y-up)/ §4.2b Astronomy Sensor | 95 |
+| `04-1_radar.md` | §4.1 レーダー(FOVと探知距離、Di、ノイズ、ノード構成) | 246 |
+| `04-2_physics_sensor.md` | §4.2 Physics Sensor(オイラー角は radian、Y-up)/ §4.2b Astronomy Sensor | 103 |
 | `04-3_gps_gun_pivot.md` | §4.3 GPS・コンパス・高度計・距離センサー / §4.3b 砲弾の挙動 / §4.3c ピボット・砲塔リング / §4.3d ビークル物理・空力・流体の全定数 | 261 |
 | `04-5_misc_sensors.md` | §4.4 Sonar / §4.5 その他センサー / §4.5b モニタ / §4.5c レーザー系 / §4.5d Hardpoint Connector / §4.5e カメラ(画角・重ね描き) / §4.5f 緊急ビーコン(Transponder / Locator) | 353 |
 | `04-6_engine_radio.md` | §4.6 ジェットエンジン / §4.7 Radio RX | 109 |
@@ -56,6 +56,6 @@ Stormworks機体のマイクロコントローラ(MC)向けLuaを書く各エー
 | `04-18_structural.md` | §4.18 構造・装飾(質量=占有体積・パイプ(流体・動力)・Physics Flooder・可動部の従ブロック・窓/手すり) | 84 |
 | `05_vehicle_xml.md` | §5 ビークル配置XMLフォーマット | 90 |
 | `06_known_traps.md` | §6 実機検証済みの既知の罠まとめ | 23 |
-| `07_unverified.md` | §7 未検証・要確認事項 | 81 |
+| `07_unverified.md` | §7 未検証・要確認事項 | 82 |
 | `08_sources.md` | §8 出典 | 32 |
 | `09_conventions.md` | §9 設計規約(9.6 パイロンの composite 規約を含む) / §10 出所プロジェクトの呼び名 | 203 |
