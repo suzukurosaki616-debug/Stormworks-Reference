@@ -32,8 +32,9 @@ RX 系 12 ファイルは §4.7 に既にあるので除く。**挙動の記述�
 bool 1〜 = Hotkey / **bool 31 = Trigger / bool 32 = Occupied** / num 1〜4 = Axis 1〜4 / **num 9 = Look X / num 10 = Look Y**。
 **num 5〜8 は空き**(HOTAS では Controller Axes)。Lua なら `Seat data` 1本で座席の全情報が取れる。
 
-- **【ユーザー知見】`Axis 1〜4` は設定次第で「離すと 0 に戻る」とも「その位置に留まる」ともできる。軸ごとに感度と挙動をゲーム設定で変えられる。**
-  → Lua 側は「この軸はセンタリングする」と決め打ちしないこと。スロットル軸を留まる設定にしている操作者と、戻る設定の操作者が同じ機体に乗りうる
+- **【ユーザー実機確認 2026-09-28、§4.5b】`Axis 1〜4` の離したときの挙動(Reset = 0 へ戻る / Sticky = その位置に留まる)と感度は、軸ごとに座席部品の設定で選ぶ。**
+  ビークルに保存されるので作った人が決める(プレイヤーごとではない)。→ **Lua 側はこの設定を前提にしてよい。** 前提にした値は機体の組み立て文書に書く
+  (【訂正 2026-11-22】以前ここに「ゲーム設定で操作者ごとに変わるので決め打ちしない」と書いていたが、§4.5b の実機確認と食い違っていた。キー割り当てはプレイヤーごと)
 - **【ユーザー知見】`Look X`/`Look Y` は turn 単位だが、真横まで向けるわけでもなく真後ろは向けない。実用範囲は ±0.3 程度。**
   **【JP Wiki VEHICLE CONTROL】Look X = −0.35〜0.35(±126°)、Look Y = −0.2〜0.2(±72°)。** 基準(座席正面=0 と推定)と符号は未検証
 - 軸の符号規約は **§9.2** を正とし、ここでは繰り返さない
@@ -98,7 +99,7 @@ bit 29 が立つ 31 ファイル:
 
 - `data_logger_bool` / `data_logger_number`、`01_block_static`
 - 旧レーダー: `radar` / `radar_dish` / `radar_large` / `radar_huge`(現行は `radar_advanced*`、§4.1)
-- 旧 Radio RX: `rx_small` / `rx_med` / `rx_large` / `rx_huge`(**現行は `_v2`**。§4.7 の「どちらがメニューに出るか」はこれで決着)
+- 旧 Radio RX: `rx_small` / `rx_med` / `rx_large` / `rx_huge`(**現行は `_v2`**。§4.7 の「ゲーム内に出るのは v2」という推定と整合する)
 - 旧ウィンチ: `winch_electric` / `winch_a` / `winch_large_a` / `winch_huge_a`(現行は `rope_hook_winch*`)、`water_hose`
 - 旧動力: `torque_gearbox` / `torque_gearbox_2` / `turbine`(Turbine Engine)、`gate_torque_add` / `gate_torque_multimeter`
 - 旧ローター: `large_rotor` / `huge_rotor` / `heavy_rotor` / `heavy_rotor_large`(現行は `rotor_coaxial_*`)

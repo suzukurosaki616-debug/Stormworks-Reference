@@ -24,7 +24,7 @@
 - 原文: *"Power received from an engine affects the forward and backward force generated."* — **回転方向で前後進する**
 - **【ユーザー知見】サイズの使い分け: Small = 小型船、Large = 中〜大型船。Giant は大きすぎて用途が謎(潜水艦なら?)**
 - **【ユーザー知見】後進の作り方は3通りあり、どれも実用**:
-  1. エンジン + 固定ピッチ → **Gearbox の逆転**(現行の Gearbox は `modular_engine_gearbox_*`、§4.9.6。旧 `torque_gearbox` は非掲載 §4.10.6)
+  1. エンジン + 固定ピッチ → **Gearbox の逆転**(現行の Gearbox は `modular_engine_gearbox_*`、比率は 4.11.4。旧 `torque_gearbox` は非掲載 §4.10.6)
   2. 可変ピッチ → `Pitch` を負にする(0 で推力ゼロ、−1 で後進、と推定。未検証)
   3. 電動モーター → `Throttle` を負にする(4.11.2)
 - **Azimuth Thruster**: 原文 *"can be attached to a robotic pivot to provide steering as well as propulsion."*
@@ -68,7 +68,7 @@
   **【ユーザー知見 2026-09-18】`Torque` は回転と無関係に「接続先の回転抵抗のようなもの」を固定値で出すだけ。
   回転数を取る以外の用途はない。** RPS 計として使う
 - **Torque Crank**(`torque_crank`): 人力クランク。power `RPS` 1本。非常用の手回し
-- **Gearbox / Clutch**(§4.9.6 のノード表)【JP Wiki MECHANICS】: ギア比 1:1 / 6:5 / 3:2 / 9:5 / 2:1 / 5:2 / 3:1、**−1:1 で逆転**。`Gear Switch` off = Ratio 1 / on = Ratio 2。
+- **Gearbox / Clutch**(`modular_engine_gearbox_*` / `_clutch_*`。モジュラーエンジンは §4.14)【JP Wiki MECHANICS】: ギア比 1:1 / 6:5 / 3:2 / 9:5 / 2:1 / 5:2 / 3:1、**−1:1 で逆転**。`Gear Switch` off = Ratio 1 / on = Ratio 2。
   **1台につき 5% の伝達損失。Ratio 1 だけでも電力が要る。** 1x1 / 3x3 / 5x5 は性能同じ。
   Clutch の `Clutch Pressure` は **0〜0.3 は伝達せず、0.3〜1.0 で段階的に伝達**
 - **Robotic Pivot (Power)**【JP Wiki】: 動力を両側に通す。可動 ±90°(0.25 turn)、指令 −1〜1(§4.3c と一致)

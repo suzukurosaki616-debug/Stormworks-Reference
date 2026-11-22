@@ -8,8 +8,8 @@
 
 | ファイル | 章 | 行数 |
 |---|---|---|
-| `04-8a_missile_warhead.md` | §4.8 ロケット/ミサイル部品(前半) | 106 |
+| `04-8a_missile_warhead.md` | §4.8 ロケット/ミサイル部品(前半) | 107 |
 | `04-8b_missile_fin_fuel.md` | §4.8 (中盤) | 167 |
-| `04-8c_missile_fin_dynamics_chaff.md` | §4.8 (後半) | 122 |
+| `04-8c_missile_fin_dynamics_chaff.md` | §4.8 (後半) | 125 |
 
 **行数が上表と大きく違うなら別物**(`00_README.md` 本体の注意書きと同じ理由)。

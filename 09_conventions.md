@@ -155,7 +155,7 @@ X = 右      Y = 上      Z = 前      （左手系）
 | 上り | num 3 | Jettison Level |
 
 **パイロン側 `Pylon Launch / Release Controller` の中身**(2026-09-28、`AHP1014B` と `Object 314 IM` で同一の版を読解): `Launch` という名の端子は **composite 出力で、入力 composite の素通し**(搭載物へ渡す)。`Release` は bool 出力で、入力の bool ch2(分離)。**Hardpoint の Launch 入力を bool で駆動する出力は無い。****実機の配線は `Release` 出力(= 下り bool ch2 の分離)→ Hardpoint の `Launch` 入力**(ユーザー確認 2026-09-28)。したがって v1 では**発射で Hardpoint は外れない**(搭載物が bool1 を読んで自分で撃つ。多連装ポッド向きの作り)、**投棄は Launch で外れる**(`Launched` が立つ)。
-出回り先では、この `Launch`(搭載物への composite)の元を別系統の射撃管制(MumenR 製)に差し替えた改造版がある(`Obj 1891 SMS/research/AHP1014B.md`)。
+出回り先では、この `Launch`(搭載物への composite)の元を別系統の射撃管制(MumenR 製)に差し替えた改造版がある(`Obj 1891 SMS` で読解)。
 
 v1 の既知の問題: 発射が Jettison Level も種別も見ない / 自動投棄が選択中のパイロンだけ /
 **パイロン側が Release を配線しておらず投棄も Launch で出ていた**(ブースター分離の搭載物のため。ミサイルは投棄でも `Launched` が立つ)。
@@ -187,8 +187,16 @@ v1 の既知の問題: 発射が Jettison Level も種別も見ない / 自動�
 - `Obj 1872 AAFCS` — 対空射撃管制。4.2〜4.3b(センサー・砲弾)の定義ファイル読解の出所。
 - `Obj 1882 Trinocular-M` — ターゲティングポッド。4.5c〜4.5e(レーザー・Hardpoint・カメラ)の出所。
 - `Obj 1871 GFCS` — 戦車砲の射撃統制装置。§4.3b(砲の系統・信管・榴弾の範囲)・§4.5b(座席・Viewing Scope)の聞き取り、§4.3c(Turret Ring の速度)の実測の出所。
-- `Obj 1171 MRM` のログ — §4.2 の角速度がワールド系であることの確定に使った。
+- `Obj 1171 MRM` — 液体燃料ロケットの誘導弾(垂直発射・データリンク)。§4.8 の液体ロケット・TVC・フィン面積の実測、§4.6 の周波数割り当ての出所。そのログで §4.2 の角速度がワールド系であることを確定した。
 - `Obj 9101 EULERTEST` — Physics Sensor のオイラー角の規約を判定する治具。
 - `Obj 1841 NAVAID` — 船舶用航海支援(測深・前方測深)。§4.5c の水面透過の用途例。
 - `Obj 1951 ALARM` — 船舶の警報バス。§4.11・§4.12・§4.15 の設計上の注意の宛先。
 - `Obj 9901 SWSIM` — PC上の Stormworks 挙動シミュレータ。`stormworks64.exe` の直読調査の出所。
+- `Obj 1191 TESTBED` — `Obj 1171 MRM` を段階的に組み直すための試験機。§4.8 のフィン配置の比較の出所。
+- `Obj 1291 BARS` — カートリッジ式VLSの発射管制。§4.6 の周波数割り当ての出所。
+- `Obj 1891 SMS` — パイロン(Hardpoint)コントローラー。§9.6 のパイロン規約の出所。§2 の 30bit 詰めの採用例。
+- `Obj 1911 FUELSYS` / `Obj 1921 HULLSYS` / `Obj 1931 DECKSYS`(予定) — 船舶の燃料・機関 / 船体(喫水・区画)/ 甲板(アンカー・陸電)の監視。§4.12〜§4.18 の設計上の注意の宛先。
+- `Obj 9103 TGTFEED` — マップ系→Y-up系の軸入れ替えを含む目標座標の変換治具(§9.5)。
+- `Obj 9105 LASERLAG` — Laser Distance Sensor の指令→距離の遅延を tick で実測した治具(§4.5c)。
+- `Obj 9902 MCBENCH` — マイコン `.xml` の生成・読み書き・検証ツール([公開版](https://github.com/suzukurosaki616-debug/Stormworks-MCBENCH))。§6 の13・14番(プロパティのスライダー・ドロップダウン)の治具。
+- `Object 314 IM` / `Object 353 Missile Pod 8` — ユーザーの機体に載っている旧版(v1)のパイロン部品と搭載物。§9.6.2 の読解元。

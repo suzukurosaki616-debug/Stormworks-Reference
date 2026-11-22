@@ -51,7 +51,7 @@
 | Funnel Duct | `steam_coal_funnel` | bool `Open`。*"slowly move resources out of the connected system"* |
 | Vacuum Duct | `steam_coal_vacuum` | bool `Active` + elec。前方のダクト/ホッパーから吸い上げる |
 
-- **`Fill Level` が num で出るので、石炭残量は Lua から読める。** 燃料残量計(FUELSYS)と同じ作りにできる
+- **`Fill Level` が num で出るので、石炭残量は Lua から読める。** 燃料残量計(`Obj 1911 FUELSYS`)と同じ作りにできる
 - 単位(個数か割合か)は原文に無い(§7)
 
 #### 4.16.3 原子炉(2部品)

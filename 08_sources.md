@@ -22,7 +22,6 @@
 - [Steam Guide - The Math behind the XML](https://steamcommunity.com/sharedfiles/filedetails/?id=3350900327)(`r`回転行列の構造の一次情報)
 - [Steam Guide - Physics Sensor / euler angles](https://steamcommunity.com/sharedfiles/filedetails/?id=3302971632)(**オイラー角の単位・軸対応・適用順・左手系の一次情報**。4.2節の出典)
 - [Reddit - Stormworks XML rotations to Euler rotations (r/Stormworks)](https://www.reddit.com/r/Stormworks/comments/1hpvvdx/stormworks_xml_rotations_to_euler_rotations/)(`r`行列の構造の補強、XML編集ウェッジの歪み現象の説明)
-- Steamガイド(Physics/Astronomy SensorのEuler出力に関するもの、URL未記録)- Stormworksが左手系座標系である旨の記載。要再確認・裏取り。
 - [FLUID - Stormworks: Build and Rescue_JP Wiki](https://wikiwiki.jp/sbarjp/FLUID)(タンク容量・バルブの無給電時挙動・ポート系の性能差なし。§4.9 の出典。**ユーザー推奨: 疑問が出たらまず JP Wiki を覗く**)
 - JP Wiki の [VEHICLE CONTROL](https://wikiwiki.jp/sbarjp/VEHICLE%20CONTROL) / [PROPULSION](https://wikiwiki.jp/sbarjp/PROPULSION) / [ELECTRIC](https://wikiwiki.jp/sbarjp/ELECTRIC) / [MECHANICS](https://wikiwiki.jp/sbarjp/MECHANICS) / [クラフトガイド/エンジン系](https://wikiwiki.jp/sbarjp/クラフトガイド/エンジン系)(§4.10・§4.11・§4.9.7 の出典、2026-09-18。**非公式。XML と一致する数値は XML 転記の可能性があり、独立の裏付けとしない**。§0b 規則5)
 - [検証 - Stormworks: Build and Rescue_JP Wiki](https://wikiwiki.jp/sbarjp/%E6%A4%9C%E8%A8%BC)(Emergency Beacon のパルス間隔と距離の式。§4.5f の出典。非公式・本資料では未検証)

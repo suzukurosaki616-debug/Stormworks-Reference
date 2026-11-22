@@ -30,7 +30,7 @@ function pn(n, d) local v = property.getNumber(n) if v == 0 then return d end re
 > 読み替えられてしまう。**0 を意味させたいときは負値を入れ、読み出し側で 0 へクランプする。**
 > (`Obj 1171 MRM` の遅延プロパティがこの方式。`math.max(0, pn("Ignite Delay", 30))`)
 
-`pn("名前", 既定値)` の**2引数形に統一すること**。MCBENCH がこの正規表現で走査して Property Number
+`pn("名前", 既定値)` の**2引数形に統一すること**。`Obj 9902 MCBENCH`([公開版](https://github.com/suzukurosaki616-debug/Stormworks-MCBENCH))がこの正規表現で走査して Property Number
 部品を自動配置するため、3引数だと部品が置かれず実機で調整できなくなる。
 
 ### screen
@@ -80,7 +80,7 @@ map.mapToScreen(mapX, mapY, zoom, screenW, screenH, worldX, worldY) -- -> pixelX
 | 10 | 10 km | 313 m/px | 104 m/px | 35 m/px |
 | 50 | 50 km | 1563 m/px | 521 m/px | 174 m/px |
 
-タッチで座標を指定するUIでは、この値がそのままタップ分解能になる。`screenW` は**モニタのタッチ出力 composite から受け取る**こと(罠8番により `onTick` で `screen.getWidth()` は呼べない。下記4.8節)。
+タッチで座標を指定するUIでは、この値がそのままタップ分解能になる。`screenW` は**モニタのタッチ出力 composite から受け取る**こと(罠8番により `onTick` で `screen.getWidth()` は呼べない。§4.5b)。
 
 ### async (HTTP)
 ```lua

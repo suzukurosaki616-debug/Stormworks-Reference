@@ -20,13 +20,13 @@
 - **Lockable Button の `Unlock`**: on のときだけ人が触れる。**Lua から人の操作を禁止できる唯一のボタン。**
   危険操作(消火起動・アンカー投下・区画隔離)のインターロックに使う
 - **Throttle Lever**【ユーザー知見 2026-09-23】: **手を離しても戻らない。** 速度設定はプロパティで 1〜100% だが、
-  **100% が 1 tick あたりいくつかは不明**(§7)。**座席の Axis と違って「戻る/留まる」の設定差が無い**ので、
-  操作者の設定に依存しない指令源が要るならレバーのほうが安全
+  **100% が 1 tick あたりいくつかは不明**(§7)。座席の Axis(Reset / Sticky を部品設定で選ぶ、§4.5b)と違い、
+  **常に留まる**。設定が無いので、組み立て文書に書く項目が1つ減る
 - **Large Keypad**: 原文 *"A short pulse will be emitted from the keypad's pulse node when the confirm button is clicked"* —
   **確定時に1発パルス、値は継続出力。** 「入力されたか」をエッジで拾えるので Lua 側でエッジ検出を書かなくてよい
 - **【ユーザー知見】Large Keypad の座標入力は「先にマップに WP を置く → キーパッドを開いてボタンを押す」**で
   その座標が入る。**入る値は GPS と同じ地図座標系**(ユーザーの言い方では Z-up。§4.3 の GPS は Number1=東 / Number2=北)。
-  → **NAVAID の目的地入力はこれで足りる。** Lua 側でマップのタッチ座標から逆算する必要がない
+  → **`Obj 1841 NAVAID` の目的地入力はこれで足りる。** Lua 側でマップのタッチ座標から逆算する必要がない
 
 #### 4.13.2 ドアと区画(11種)
 
@@ -61,7 +61,7 @@ closed enough to be forming a seal. Only one controller should be placed per fra
 
 - **`Magnet Toggle` 型(Small / Large / Hinge / Mag All)は両方 on で繋がる。
   `Release Connector` 型(Electric / Fluid / Torque)は近づけば勝手に繋がり、on で切る。** 論理が逆なので注意
-- **陸電・給油の接続状態は `Connected` bool で取れる。** DECKSYS の陸電表示はこれ
+- **陸電・給油の接続状態は `Connected` bool で取れる。** `Obj 1931 DECKSYS` の陸電表示はこれ
 - Mag All の `Force` は**現在の応力が num で出る**。切断前に警報を出せる
 
 #### 4.13.4 直動(5種)
@@ -94,7 +94,7 @@ resists lateral sliding forces, causing the majority of a boat's movement to be 
 - **横滑りも抑える**(原文)ので、**旋回の挙動そのものが変わる。** 操舵制御を組む前にキールの有無を決めること。
   Lua からは何も見えない/触れないが、**制御の前提として効く**
 
-> **HULLSYS のヒール制御を「能動制御」で組む前に、キールで足りないかを先に見ること。**
+> **`Obj 1921 HULLSYS` のヒール制御を「能動制御」で組む前に、キールで足りないかを先に見ること。**
 > Reaction Wheel は電力収支(§4.9.7)を圧迫する。
 
 ---

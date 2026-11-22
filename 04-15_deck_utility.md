@@ -30,7 +30,7 @@
   **範囲が −1〜1 かは未確認**(原文は *"clamped to a relative range of -1 to 1"*。§7)
 - **【ユーザー知見】Small Winch にノードが少ないのは下位互換品だからではなく、サイズが小さくてノードを置く余裕が無いから**(4.15.5)
 - **ウィンチ/ケーブルアンカーは繋いだ相手と comp / bool / video / audio / elec / fluid をやりとりできる。**
-  → **陸電・給水・データリンクを1本のケーブルで兼ねられる。** DECKSYS の陸電表示はこれで組む
+  → **陸電・給水・データリンクを1本のケーブルで兼ねられる。** `Obj 1931 DECKSYS` の陸電表示はこれで組む
 - Pulley が出すのは**長さ**であって張力ではない。**張力を直接読む手段は無い**(Mag All の `Force` は別部品、§4.13.3)
 - **旧ウィンチ(`winch_a` / `winch_electric` / `winch_large_a` / `winch_huge_a` と `water_hose`)は非掲載部品**(§4.10.6)。
   ノード構成が違うので混同しないこと
@@ -73,7 +73,7 @@
 | **Fluid Nozzle** | `water_nozzle` | 1 | fluid `Fluid Supply` + **num `Spray Angle`(0=集束 〜 1=拡散)** + elec |
 | **Fluid Cannon** | `watercannon` | 11 | **num `Turret Swivel`(ヨー)/ num `Nozzle Pitch`(ピッチ)** + fluid + elec |
 | Heater | `heater` | 3 | bool + elec。*"warm either the compartment it is within or any players within a 10m radius"* |
-| Transponder | `transponder` | 1 | bool `Active` + elec。Transponder Locator(§4.5)で遠距離から探せる |
+| Transponder | `transponder` | 1 | bool `Active` + elec。Transponder Locator(§4.5f)で遠距離から探せる |
 | Vehicle Parachute | `parachute` | 5 | bool |
 | Mounted Welder / End-Effector | `vehicle_tool_*` | 10 | bool + elec |
 

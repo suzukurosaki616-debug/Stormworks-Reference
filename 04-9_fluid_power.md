@@ -1,4 +1,4 @@
-### 4.9 流体系・機関・電力部品 — 定義XMLの読解結果(挙動は未検証)
+### 4.9 流体系・機関・電力部品 — 定義XMLの読解結果 + 一部実機(挙動は札のあるものだけ確認済み)
 
 **【一次資料 2026-09-17】`rom/data/definitions/*.xml` 759ファイルのうち、fluid ノード(type=3)を持つか
 `water_component_type≠0` の 133 ファイルを機械抽出して読んだ結果。** 加えて機関・電力系
@@ -50,7 +50,7 @@
 
 | 部品 | ノード | 備考 |
 |---|---|---|
-| **Liquid Meter** (`water_measure.xml`) | num1 `Liquid Level`(L)/ num2 `Fluid Capacity`(L、**非密閉なら 0**)/ comp `Composite Data` | 密閉区画内の液体量。**【訂正】4.5 の旧表は順序が逆**(定義順は Level が先) |
+| **Liquid Meter** (`water_measure.xml`) | num1 `Liquid Level`(L)/ num2 `Fluid Capacity`(L、**非密閉なら 0**)/ comp `Composite Data` | 密閉区画内の液体量(定義順は Level が先) |
 | **Gas Meter** | num1 `Gas Level` / num2 `Fluid Capacity` / comp | 同上の気体版 |
 | Fluid Pressure Sensor | fluid `Fluid` / num `Pressure` | 接続した流体ネットワークの圧力 |
 | Barometer | num `Pressure` | *"pressure in atmospheres of the compartment or current altitude"* |
@@ -79,7 +79,7 @@
 > **Liquid Meter を密閉区画の外に置くと「水面からの高さ」を返す**(原文: *"If not inside an enclosed
 > volume, it will give the height relative to the water surface."*)。**【ユーザー実機知見 2026-09-17】確認済み。
 > 波があればそれに応じて上下する、絶対高度(Altimeter)とは別の値。** 喫水計に使える。
-> 符号・基準点(部品位置か)は未記録。NAVAID の喫水算出(Altimeter ベース)の代替候補。
+> 符号・基準点(部品位置か)は未記録。`Obj 1841 NAVAID` の喫水算出(Altimeter ベース)の代替候補。
 
 #### 4.9.3 バルブ・ポンプ・フィルタ
 
