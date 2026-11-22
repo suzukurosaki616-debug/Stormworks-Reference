@@ -196,6 +196,7 @@ v1 の既知の問題: 発射が Jettison Level も種別も見ない / 自動�
 - `Obj 1291 BARS` — カートリッジ式VLSの発射管制。§4.6 の周波数割り当ての出所。
 - `Obj 1891 SMS` — パイロン(Hardpoint)コントローラー。§9.6 のパイロン規約の出所。§2 の 30bit 詰めの採用例。
 - `Obj 1911 FUELSYS` / `Obj 1921 HULLSYS` / `Obj 1931 DECKSYS`(予定) — 船舶の燃料・機関 / 船体(喫水・区画)/ 甲板(アンカー・陸電)の監視。§4.12〜§4.18 の設計上の注意の宛先。
+- `Obj 9102 DATALOG` — composite の値を HTTP で PC の CSV に記録する治具([公開版](https://github.com/suzukurosaki616-debug/Stormworks-DataLogger))。§3 の HTTP ロギングの実測(往復 2〜4 tick)の出所。
 - `Obj 9103 TGTFEED` — マップ系→Y-up系の軸入れ替えを含む目標座標の変換治具(§9.5)。
 - `Obj 9105 LASERLAG` — Laser Distance Sensor の指令→距離の遅延を tick で実測した治具(§4.5c)。
 - `Obj 9902 MCBENCH` — マイコン `.xml` の生成・読み書き・検証ツール([公開版](https://github.com/suzukurosaki616-debug/Stormworks-MCBENCH))。§6 の13・14番(プロパティのスライダー・ドロップダウン)の治具。

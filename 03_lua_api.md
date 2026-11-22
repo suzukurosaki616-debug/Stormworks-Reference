@@ -113,6 +113,8 @@ function httpReply(port, request_body, response_body) end  -- 応答コールバ
 
 実機計測が要る設計(弾道係数、旋回半径、センサーの符号規約など)では、モニタに数字を出して目視するより桁違いに効率が良い。
 
+この方式のマイコンと受信側は [Stormworks-DataLogger](https://github.com/suzukurosaki616-debug/Stormworks-DataLogger) として公開している(`Obj 9102 DATALOG`)。【実機】HTTP の往復に2〜4 tick かかるので、応答待ちを挟むと実効 15〜20 行/秒。数値32ch+bool の約300文字の URL も通っている
+
 ### callback
 ```lua
 function onTick() end  -- composite input/output はここでのみ操作可能

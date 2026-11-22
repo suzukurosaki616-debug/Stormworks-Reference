@@ -37,7 +37,7 @@ Stormworks機体のマイクロコントローラ(MC)向けLuaを書く各エー
 | `00a_dev_meta.md` | §0a 開発者の明言(ゲーム内 Help の "Meta from the devs"。**最優先**) | 14 |
 | `01_lua_runtime.md` | §1 Lua実行環境の特性・落とし穴(MC Lua は 5.3) | 24 |
 | `02_composite.md` | §2 コンポジット channel の一般ルール(Composite Write のゼロフィル) | 48 |
-| `03_lua_api.md` | §3 Lua API 関数リファレンス(input/output, property, screen, map, async, callback) | 123 |
+| `03_lua_api.md` | §3 Lua API 関数リファレンス(input/output, property, screen, map, async, callback) | 125 |
 | `04-1_radar.md` | §4.1 レーダー(FOVと探知距離、Di、ノイズ、ノード構成) | 245 |
 | `04-2_physics_sensor.md` | §4.2 Physics Sensor(オイラー角は radian、Y-up)/ §4.2b Astronomy Sensor | 95 |
 | `04-3_gps_gun_pivot.md` | §4.3 GPS・コンパス・高度計・距離センサー / §4.3b 砲弾の挙動 / §4.3c ピボット・砲塔リング / §4.3d ビークル物理・空力・流体の全定数 | 261 |
@@ -58,4 +58,4 @@ Stormworks機体のマイクロコントローラ(MC)向けLuaを書く各エー
 | `06_known_traps.md` | §6 実機検証済みの既知の罠まとめ | 23 |
 | `07_unverified.md` | §7 未検証・要確認事項 | 81 |
 | `08_sources.md` | §8 出典 | 32 |
-| `09_conventions.md` | §9 設計規約(9.6 パイロンの composite 規約を含む) / §10 出所プロジェクトの呼び名 | 202 |
+| `09_conventions.md` | §9 設計規約(9.6 パイロンの composite 規約を含む) / §10 出所プロジェクトの呼び名 | 203 |
